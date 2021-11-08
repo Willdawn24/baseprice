@@ -13,17 +13,7 @@
       {% endfor %}
     </ul>
     
-    <form method="POST">
-      {{form.hidden_tag()}}
-      {{ form.date.label(class='form-label')}} 
-      {{ form.date(class='datepicker') }}
-      <br>
-      {{form.feedcode.label(class='form-label')}} 
-      {{form.feedcode(class='form-control')}} 
-      <br>
-      {{form.gender.label(class='form-label')}} 
-      {{form.gender()}}
-      <br>
-      {{form.submit(class='btn btn-primary')}}
+    <form method="POST" action = "/result">
+      {{ wtf.quick_form(form) }}
     </form>
 {% endblock %}

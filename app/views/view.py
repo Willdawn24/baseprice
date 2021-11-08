@@ -2,6 +2,7 @@ from functools import wraps
 from flask import request, Blueprint, render_template, jsonify, flash, \
     redirect, url_for
 from app import app
+from app.control.control import plot
 
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
@@ -27,6 +28,11 @@ def home():
         return render_template('result.html', form = form)
     return render_template('home.html', notes = [{'data': "data1", 'id': 1}, {'data': "data2", 'id': 1}], form = form)
 
+@app.route('/result', methods=['POST'])
+def result():
+    form = RegForm()
+    fig = plot("")
+    return render_template('result.html', form = form, fig = fig)
 
 # @catalog.route('/product/<id>')
 # def product(id):
